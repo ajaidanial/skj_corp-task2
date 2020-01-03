@@ -21,11 +21,14 @@ class PostSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
     def create(self, validated_data):
-        comments_data = validated_data.pop("comments")
-        post = Post.objects.create(**validated_data)
         # save comments
-        comments_serializer = CommentSerializer(many=True, data=comments_data)
-        if comments_serializer.is_valid():
-            comments = comments_serializer.save()
+        comments = None
+        if "comments" in validated_data:
+            comments_data = validated_data.pop("comments")
+            comments_serializer = CommentSerializer(many=True, data=comments_data)
+            if comments_serializer.is_valid():
+                comments = comments_serializer.save()
+        post = Post.objects.create(**validated_data)
+        if comments:
             post.comments.set(comments)
         return post

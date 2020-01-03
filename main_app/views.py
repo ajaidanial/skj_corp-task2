@@ -21,6 +21,15 @@ class PostViewSet(viewsets.ModelViewSet):
         serializer = CommentSerializer(comments, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
+    @action(detail=True, url_path="comments/create", methods=["post"])
+    def create_comments(self, request, pk):
+        serializer = CommentSerializer(many=True, data=request.data)
+        if serializer.is_valid():
+            comments = serializer.save()
+            self.get_object().comments.add(*comments)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 class CommentViewSet(
     viewsets.ReadOnlyModelViewSet, mixins.UpdateModelMixin, mixins.DestroyModelMixin,
