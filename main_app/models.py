@@ -21,6 +21,9 @@ class BaseAppModel(models.Model):
         self.updated_at = timezone.now()
         return super(BaseAppModel, self).save(*args, **kwargs)
 
+    def __str__(self):
+        return self.title
+
 
 class Comment(BaseAppModel):
     """Comment's model."""
@@ -31,4 +34,4 @@ class Comment(BaseAppModel):
 class Post(BaseAppModel):
     """Post's model."""
 
-    comments = models.ManyToManyField(to=Comment, related_name="comments", blank=True)
+    comments = models.ManyToManyField(to=Comment, related_name="post", blank=True)

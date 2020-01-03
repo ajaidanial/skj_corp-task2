@@ -100,3 +100,12 @@ ADMIN_USER = {
     "username": env.str("ADMIN_USERNAME", "admin@admin.com"),
     "password": env.str("ADMIN_PASSWORD", "admin"),
 }
+
+# REST Framework settings
+# -----------------------------------------------------------------------
+REST_FRAMEWORK = {
+    "DEFAULT_PERMISSION_CLASSES": ["rest_framework.permissions.AllowAny"],
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.BasicAuthentication"
+    ],
+}

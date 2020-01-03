@@ -17,7 +17,7 @@ python manage.py makemigrations
 python manage.py migrate
 
 # static files
-python manage.py collectstatic
+# python manage.py collectstatic
 
 # start the server
 python manage.py runserver
