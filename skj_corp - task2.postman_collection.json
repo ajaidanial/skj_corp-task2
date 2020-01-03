@@ -1,0 +1,159 @@
+{
+	"info": {
+		"_postman_id": "e899d5f4-44c1-4bbf-9e04-f7356c971aa2",
+		"name": "skj_corp - task2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "create posts",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"testpost2\",\n    \"description\": \"test desc\",\n    \"comments\": [\n        {\n            \"title\": \"test 1\",\n            \"description\": \"test 2\"\n        },\n        {\n            \"title\": \"test 2\",\n            \"description\": \"test 3\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/posts/",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"posts",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create comment by post id",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n    {\n        \"title\": \"test\",\n        \"description\": \"test 1\"\n    }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/posts/5/comments/create/",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"posts",
+						"5",
+						"comments",
+						"create",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all posts",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/posts/",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"posts",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all  comments by post id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/posts/5/comments/",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"posts",
+						"5",
+						"comments",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get post by id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{host}}/posts/4/",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"posts",
+						"4",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
